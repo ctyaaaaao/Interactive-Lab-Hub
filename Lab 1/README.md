@@ -211,7 +211,10 @@ the top of this lab: a viewer who knows the piece should recognize it; a viewer
 who doesn't should come away understanding what it's famous for. How might you illustrate the non-sequential aspects of the interaction in the sketch?
 
 **Include your video here.**
-[Watch our video sketch](https://github.com/user-attachments/assets/1ed49530-ff6a-4a75-9317-b9f87e5ce18f)
+
+https://github.com/user-attachments/assets/7ed04e10-f1fb-431f-8f7e-79d577e45c55
+
+
 
 **Please indicate who you collaborated with on this lab.** Be generous in
 acknowledging their contributions, and credit any other influences (YouTube,
