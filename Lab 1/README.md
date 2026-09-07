@@ -228,13 +228,18 @@ Github, Twitter, a friend who lent you a lamp) that informed your recreation.
 
 ## Prep (before the next lab)
 
-Find three other groups. (How? Maybe Slack?) Visit their Lab Hub pages, watch their
-videos, and give them reactions and feedback: tell them what you saw happening,
-guess the masterwork and the goals of the characters, and ask about anything that
-wasn't clear.
+Find three other groups. (How? Maybe Slack?) Visit their Lab Hub pages, watch their videos, and give them reactions and feedback: tell them what you saw happening, guess the masterwork and the goals of the characters, and ask about anything that wasn't clear.
 
 **Who were the other groups you kibitzed with? Add links to their project pages here.**
+1. https://github.com/Cyalisonliu/Interactive-Lab-Hub/tree/Fall2026/Lab%201
+2. https://github.com/aurorajxshen/Interactive-Lab-Hub/tree/Fall2026/Lab%201
+3. https://github.com/anihadagali7/Interactive-Lab-Hub/blob/anihadagali7-Aug26-Lab/Lab%201/README.md
+
 **Summarize the feedback you got from your partners here.**
+The feedbacks I got were mostly positive. They liked the animation and storytelling, especially how the bubbles came out of the person and how the visual objects changed their sizes and shapes based on the sounds. They also thought the stop-motion animation was a creative way to present the idea without being limited by a big screen or dark room.
+
+They also pointed out some parts that could be clearer. For example, the “Master of Light” was not immediately recognizable, and it was a little confusing what caused the circles to appear at the beginning. They also suggested exploring more everyday applications, such as lamps, room projections, conferences, or art performances. Another interesting idea was to make the project more portable, such as using a wearable projector to help people with aphasia communicate through visuals.
+
 
 ## Remix, Update, or Critique the Master
 
@@ -251,12 +256,12 @@ combine them):
 3. **Fix its weaknesses.** You identified this master's strengths and weaknesses
    in Part 0 — now address a weakness, or push a strength further.
 
-We will grade this second pass with an emphasis on **creativity** and on how well
-your response engages with what your master was really doing.
+We will grade this second pass with an emphasis on **creativity** and on how well your response engages with what your master was really doing.
 
 **Document everything here — especially the storyboard and video. Photos of the
 prototype are great too.**
 
+![Storyboard](image/storyboard2.jpg)
 ---
 
 
