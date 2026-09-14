@@ -158,6 +158,8 @@ You can look in `image.py` for an example of how to display an image on the scre
 
 \*\*\***Include a picture of your own Raspberry Pi displaying the piscreen.service with your unique MAC address. Additionally, please provide another picture showing the successful completion of the screen test.**\*\*\*
 
+![MAC address](image/MAC_address.png)
+![Screen test](image/screen_test.png)
 
 ## Part D. 
 ### Set up the Display Clock Demo
@@ -193,6 +195,9 @@ We strongly discourage literal digital or analog clock display: Be creative.
 
 
 ** Insert ideas, sketches, [Verplank diagrams](https://ccrma.stanford.edu/courses/250a-fall-2004/IDSketchbok.pdf)), storyboards for your ideas **
+**Sky Clock**
+Instead of displaying numerical time, the clock visualizes the progression of a day through changes in the sky. The background color changes from morning to night, while the sun or moon moves across the screen to indicate the approximate time of day.
+![Storyboard](image/Storyboard1.jpg)
 
 
 
