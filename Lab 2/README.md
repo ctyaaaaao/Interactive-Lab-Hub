@@ -160,6 +160,7 @@ You can look in `image.py` for an example of how to display an image on the scre
 
 ![MAC address](image/MAC_address.png)
 ![Screen test](image/screen_test.png)
+![Clock test](image/clock_test.jpg)
 
 ## Part D. 
 ### Set up the Display Clock Demo
@@ -198,10 +199,15 @@ We strongly discourage literal digital or analog clock display: Be creative.
 **Sky Clock**
 Instead of displaying numerical time, the clock visualizes the progression of a day through changes in the sky. The background color changes from morning to night, while the sun or moon moves across the screen to indicate the approximate time of day.
 ![Storyboard](image/Storyboard1.jpg)
+![Verplank diagram](image/Verplank_diagram.jpg)
 
 
 
 **Put the names of the people you gave feedback to here. (Even better, add links to their repos here!)**
+
+1. https://github.com/WenqingPan-Lucy/Interactive-Lab-Hub/tree/WenqingPan_Lab/Lab%202
+2. https://github.com/Cyalisonliu/Interactive-Lab-Hub/tree/Fall2026/Lab%202
+3. https://github.com/Tzuyi-Wei/Interactive-Lab-Hub/tree/Fall2026/Lab%202
 
 # Lab 2 Part 2
 
@@ -211,6 +217,21 @@ Instead of displaying numerical time, the clock visualizes the progression of a 
 
 2. Look at and give feedback on the Part E. for at least 3 other people in the class and get 3 people to comment on your Part E!)
 **Put the feedback for your ideas here.**
+### Feedback 1
+The core concept is strong. Using color gradients and a moving sun/moon is a creative, non-numeric way to show time. The only concern is whether users can read the exact time from color alone. It may be helpful to make the numerical time more visible. Adding interaction, such as showing the movement of the sun when a button is pressed, could also be interesting.
+
+### Feedback 2
+I really like the idea of using the sky as a natural representation of time instead of relying on a traditional digital or analog clock. The changing background colors and the movement of the sun and moon make the passage of time intuitive and visually engaging. One thing that could be explored further is making the experience more dynamic, for example by adding gradual changes in brightness or other environmental elements to communicate time more subtly.
+
+### Feedback 3
+I like how the visuals and representations connect to the way nature presents time. However, the numerical time may appear too small on the digital screen, so there could be other ways to structure or display the numbers more clearly.
+
+### Key Takeaways
+From the feedback, I identified three main areas for improvement:
+
+1. Make the numerical time easier to read.
+2. Add more interaction, such as using a button to show the movement of the sun or moon.
+3. Make the visual transition more dynamic through gradual changes in color or brightness.
 
 ## Update your Lab Hub
 
