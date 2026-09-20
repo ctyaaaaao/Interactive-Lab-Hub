@@ -244,8 +244,7 @@ Start small, pick just one element of your overall idea, just to show you have a
 \*\*\***Put a copy of your code in your Lab 2 Github repo.**\*\*\*
 
 ## Make a short video of your modified barebones PiClock
-https://github.com/user-attachments/assets/65b8faa9-d59e-404c-846b-eb87f81d7962
-<img width="3086" height="2183" alt="Lab2 b Storyboard" src="https://github.com/user-attachments/assets/2e821ca9-7025-4586-9110-fc8dc5d5cf04" />
+video: https://github.com/user-attachments/assets/65b8faa9-d59e-404c-846b-eb87f81d7962
 
 \*\*\***Take a video of your barely modified PiClock.**\*\*\*
 
@@ -270,7 +269,7 @@ Sky Clock visualizes time through a combination of numerical and natural cues. T
 \*\*\***Put a copy of your code in your Lab 2 Github repo.**\*\*\*
 
 \*\*\***Take a video of your PiClock.**\*\*\*
-https://github.com/user-attachments/assets/71e2c52c-c387-4cdd-8a4a-86a8d8565509
+video: https://github.com/user-attachments/assets/71e2c52c-c387-4cdd-8a4a-86a8d8565509
 
 As always, make sure you document contributions and ideas from others (and AI) explicitly in your writeup.
 
