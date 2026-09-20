@@ -244,6 +244,8 @@ Start small, pick just one element of your overall idea, just to show you have a
 \*\*\***Put a copy of your code in your Lab 2 Github repo.**\*\*\*
 
 ## Make a short video of your modified barebones PiClock
+https://github.com/user-attachments/assets/65b8faa9-d59e-404c-846b-eb87f81d7962
+<img width="3086" height="2183" alt="Lab2 b Storyboard" src="https://github.com/user-attachments/assets/2e821ca9-7025-4586-9110-fc8dc5d5cf04" />
 
 \*\*\***Take a video of your barely modified PiClock.**\*\*\*
 
@@ -262,12 +264,13 @@ After that, Git will ask you to login to your GitHub account to push the updates
 Do take advantage of having done the previous iteration to refine and simplify your design.
 
 ** Insert any updates ideas, sketches, [Verplank diagrams](https://ccrma.stanford.edu/courses/250a-fall-2004/IDSketchbok.pdf))!, storyboards for your ideas **
-
+Sky Clock visualizes time through a combination of numerical and natural cues. The current hour is displayed at the center of the screen, while a sun or moon appears above it depending on the time of day. The background color changes throughout the day to represent morning, daytime, sunset, and night. One button allows the user to view the movement trajectory of the sun or moon, while the second button activates a fast-time mode that rapidly progresses through the hours of a day. Pressing the fast-time button again returns the clock to the real current time. Together, these features provide both an immediate reading of the current hour and a more visual representation of the passage of time.
+<img width="3086" height="2183" alt="Lab2 b Storyboard" src="https://github.com/user-attachments/assets/00dfcf57-6425-4aa4-baae-e538c797a164" />
 
 \*\*\***Put a copy of your code in your Lab 2 Github repo.**\*\*\*
 
 \*\*\***Take a video of your PiClock.**\*\*\*
-
+https://github.com/user-attachments/assets/71e2c52c-c387-4cdd-8a4a-86a8d8565509
 
 As always, make sure you document contributions and ideas from others (and AI) explicitly in your writeup.
 
