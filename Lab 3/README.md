@@ -111,9 +111,11 @@ The demo script also shows `--output-raw`, which streams audio to the speaker as
 
 \*\***Then answer: Is the same greeting, in these different voices, the same greeting? Describe one concrete way the voice changed what the utterance seemed to mean or who seemed to be speaking.**\*\*
 
+No, the same greeting did not feel exactly the same in different voices. With eSpeak, “Hello Regina, welcome back!” sounded more like a robotic system notification, while Piper sounded more natural and conversational, as if a friendly assistant was speaking to me. The words were the same, but the voice changed who I imagined was speaking and made the greeting feel warmer.
+
 ## B. Speech to Text
 
-We use [faster-whisper](https://github.com/SYSTRAN/faster-whisper), a reimplementation of OpenAI's Whisper model that runs several times faster on CPU and does not require PyTorch. All processing happens on the Pi; nothing is sent to a server.
+We use [faster-whisper](https://github.com/SYSTRAㄋN/faster-whisper), a reimplementation of OpenAI's Whisper model that runs several times faster on CPU and does not require PyTorch. All processing happens on the Pi; nothing is sent to a server.
 
 ```
 (.venv) $ python transcribe.py lookdave.wav
@@ -130,6 +132,10 @@ The transcript is not the interesting output here — the timings are. Run it ag
 Available sizes, smallest first: `tiny.en`, `base.en`, `small.en`, `medium.en`. The `.en` variants are English-only and faster than their multilingual counterparts at the same size.
 
 \*\***Record a few seconds of your own speech (`arecord -d 5 -f cd -c 1 -r 16000 test.wav`) and transcribe it with at least two model sizes. Report the real-time factor for each. At what point does the accuracy improvement stop being worth the delay, for a system that has to answer you?**\*\*
+
+I recorded a 5-second audio clip saying, “Hello, I’m Regina. Nice to meet you.” The `tiny.en` model had a real-time factor of 0.24x, and the `base.en` model had a real-time factor of 0.39x. Both incorrectly transcribed “I’m Regina” as “I’m reaching out.” The `small.en` model correctly recognized “I’m Regina,” but its real-time factor increased to 1.20x.
+
+For this example, `small.en` improved the accuracy, but the delay became much more noticeable. Since a conversational system needs to respond quickly, I think the improvement from `base.en` to `small.en` may not be worth the additional delay unless correctly recognizing names is especially important for the application.
 
 \*\***Write your own script that verbally asks for a numerical input (a phone number, zipcode, number of pets) and records the answer the respondent provides.**\*\* Numbers are a good stress test — transcription systems make characteristic errors on digit strings, and you will want to know what they are before you design around them.
 
@@ -152,6 +158,12 @@ Speak, pause, and watch it transcribe. Now change the endpointing threshold — 
 ```
 
 \*\***Try both extremes, and something in between. Describe what each one feels like to talk to. Note specifically: at 0.2s, what kinds of normal speech get cut off? At 1.5s, what does the delay make the system seem like?**\*\*
+
+At 0.2 seconds, the system felt too sensitive. When I paused briefly in the middle of a sentence to think about what I wanted to say next, the system often treated that normal pause as the end of my turn and cut the utterance into separate parts.
+
+At an intermediate setting of around 0.8–1.0 seconds, the interaction felt more natural because short thinking pauses were tolerated without introducing too much delay before the system recognized the end of my turn.
+
+At 1.5 seconds, the system felt too slow. Even after I had clearly finished a sentence and was ready to continue, the system was still waiting for enough silence before recognizing that the previous utterance had ended. This made the interaction feel delayed and less responsive.
 
 There is no correct value. A system that takes drink orders and a system that listens to someone think out loud want very different thresholds, and the right one depends on what your users are doing with their pauses.
 
