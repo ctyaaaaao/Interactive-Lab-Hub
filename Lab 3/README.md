@@ -183,9 +183,43 @@ Storyboard and/or use a Verplank diagram to design a speech-enabled device. (Stu
 
 Write out what you imagine the dialogue to be. Use cards, post-its, or whatever method helps you develop alternatives or group responses.
 
+### Voice-Controlled Electronic Pet
+This project explores a voice-controlled electronic pet that users can interact with through simple spoken commands. Instead of using buttons or menus, users can talk to the pet naturally using commands such as “Wake up,” “Feed,” “Play,” and “Go to sleep.” The pet responds through speech and visual animations, allowing the interaction to feel more like communicating with and caring for a real pet. The system also uses a short silence threshold to determine when the user has finished speaking before responding.
+
+| Command Group | Example User Utterances | Pet Response / State |
+|---|---|---|
+| **Wake Up** | “Wake up.” / “Good morning.” / “Are you awake?” | Pet wakes up and says, “Good morning! I’m awake!” |
+| **Feed** | “Feed.” / “Time to eat.” / “Have some food.” | Pet shows an eating animation and says, “Yum! Thank you!” |
+| **Play** | “Play.” / “Let’s play.” / “Do you want to play?” | Pet enters the playing state and says, “Yay! Let’s play!” |
+| **Sleep** | “Go to sleep.” / “Good night.” / “Time for bed.” | Pet returns to the sleeping state and says, “Good night!” |
+
+![Storyboard](img/Storyboard.jpg)
+![Verplank diagram](img/Verplank_diagram.jpg)
+
+### Dialogue Script
+[The electronic pet is sleeping.]
+User: "Wake up!"
+[The device waits for 0.8 seconds of silence.]
+Pet: "Good morning! I'm awake!"
+[The device listens for the next command.]
+User: "Feed!"
+[The device waits for 0.8 seconds of silence.]
+Pet: "Yum! Thank you!"
+[The pet shows an eating animation and then listens again.]
+User: "Play!"
+[The device waits for 0.8 seconds of silence.]
+Pet: "Yay! Let's play!"
+[The pet shows a playing animation.]
+User: "Go to sleep."
+[The device waits for 0.8 seconds of silence.]
+Pet: "Good night!"
+[The pet returns to the sleeping state.]
+
 \*\***Please describe and document your process.**\*\*
 
 Your script should include the pauses. Where does your device wait, and for how long? You now know from Part C that this is a parameter you have to choose, not something that happens for free.
+
+I started with the idea of making an electronic pet feel more like a pet than a menu-based interface. I first listed simple actions that people commonly use when interacting with or caring for a pet, such as waking it up, feeding it, playing with it, and putting it to sleep. I then converted these actions into voice commands and organized them around the pet's different states: sleeping, awake, eating, and playing. Based on this interaction flow, I created the storyboard and Verplank diagram. I also incorporated the turn-taking results from Part C. Since a 0.2-second silence threshold frequently cut off normal pauses and 1.5 seconds felt too slow, I chose approximately 0.8 seconds of silence before the device treats a voice command as complete.
 
 ## E. Acting out the dialogue
 
