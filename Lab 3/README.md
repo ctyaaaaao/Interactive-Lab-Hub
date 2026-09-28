@@ -197,23 +197,41 @@ This project explores a voice-controlled electronic pet that users can interact 
 ![Verplank diagram](img/Verplank_diagram.jpg)
 
 ### Dialogue Script
+
 [The electronic pet is sleeping.]
+
 User: "Wake up!"
+
 [The device waits for 0.8 seconds of silence.]
+
 Pet: "Good morning! I'm awake!"
+
 [The device listens for the next command.]
+
 User: "Feed!"
+
 [The device waits for 0.8 seconds of silence.]
+
 Pet: "Yum! Thank you!"
+
 [The pet shows an eating animation and then listens again.]
+
 User: "Play!"
+
 [The device waits for 0.8 seconds of silence.]
+
 Pet: "Yay! Let's play!"
+
 [The pet shows a playing animation.]
+
 User: "Go to sleep."
+
 [The device waits for 0.8 seconds of silence.]
+
 Pet: "Good night!"
+
 [The pet returns to the sleeping state.]
+
 
 \*\***Please describe and document your process.**\*\*
 
@@ -227,6 +245,9 @@ Find a partner, and *without sharing the script with your partner* try out the d
 
 \*\***Describe if the dialogue seemed different than what you imagined when it was acted out, and how.**\*\*
 
+https://github.com/user-attachments/assets/57a60d58-dd82-47bb-90a3-a3d1ac477ab4
+
+The dialogue was more open-ended than I originally imagined. I expected the user to use specific commands such as “Play” or “Let’s play,” but during the interaction, my partner used phrases like “Do you wanna play?” instead. Although the intent was the same, the wording was different from the commands I had predefined. This made me realize that a real system should recognize multiple ways of expressing the same intent rather than relying only on exact command phrases. It should also handle additional conversational input that doesn't directly match a predefined command. Therefore, I would add more commands for each intent so that the system can respond to a wider range of natural expressions.
 
 ---
 
