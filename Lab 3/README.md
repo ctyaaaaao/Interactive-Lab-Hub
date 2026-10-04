@@ -280,8 +280,6 @@ This visual feedback makes the turn-taking process clearer because the user does
 
 ### 3. Make a new storyboard, diagram and/or script based on these reflections.
 
-### 3. Make a new storyboard, diagram and/or script based on these reflections.
-
 Based on the issues found in Part 1, I redesigned the interaction so that the system gives clearer feedback and supports more natural ways of speaking.
 
 #### Storyboard / Interaction Flow
@@ -290,44 +288,28 @@ Based on the issues found in Part 1, I redesigned the interaction so that the sy
 1. The pet is waiting
    Screen: SLEEPING or LISTENING
 
-        ↓
-
 2. The user starts speaking
    Example: "Do you want to play?"
-
-        ↓
 
 3. The system detects speech
    Screen: LISTENING...
 
-        ↓
-
 4. The user finishes speaking
    The system waits for about 0.8 seconds of silence
 
-        ↓
-
 5. The system processes the speech
    Screen: THINKING...
-
-        ↓
 
 6. Whisper converts the speech to text
    Example transcript:
    "Do you want to play?"
 
-        ↓
-
 7. The system identifies the intent
    Detected intent: PLAY
-
-        ↓
 
 8. The pet responds
    Screen: PLAYING
    Pet: "Yay! Let's play!"
-
-        ↓
 
 9. The system returns to listening
    Screen: LISTENING...
@@ -380,6 +362,8 @@ The terminal also displays the internal processing stages, including when the sy
 *Include videos or screencaptures of both the system and the controller.*
 
 ![Terminal](img/terminal.png)
+
+https://github.com/user-attachments/assets/b2df2efb-52b3-4e19-8c6e-decb28257be6
 
 
 ## Test the system
