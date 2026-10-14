@@ -304,6 +304,10 @@ Build a cardboard or other low-fidelity physical prototype of your design.
 **\*\*\*Document your rough prototype with photos and/or video.\*\*\***
 ![Prototype](img/prototype.JPG)
 
+
+https://github.com/user-attachments/assets/8e9b970d-60d3-4f68-b0e0-1b790fb89850
+
+
 ---
 
 ## Part 2
