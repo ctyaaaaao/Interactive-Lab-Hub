@@ -285,14 +285,24 @@ Your kit includes these [SparkFun Qwiic OLED screens](https://www.sparkfun.com/p
 As you develop your Feast Automata concept, consider where the sensor and actuator need to be placed, what parts move, how electronics are housed, and how the overall form and aesthetics support the interaction.
 
 **\*\*\*Draw 5 sketches that explore different physical arrangements for your sensing and actuation.\*\*\***
+![Sketch1](img/sketch1.JPG)
+![Sketch2](img/sketch2.JPG)
+![Sketch3](img/sketch3.JPG)
+![Sketch4](img/sketch4.JPG)
+
 
 **\*\*\*What questions do these sketches raise? What do you need to physically prototype to answer them?\*\*\***
 
+These sketches raise questions about how sensors can detect different dining behaviors and how physical movements can make these interactions more playful and meaningful. We also wondered how to make the feedback feel natural without interrupting the dining experience. To answer these questions, we need to test different sensor placements, servo movements, and physical structures, especially how the flower responds to users' dining behaviors and communicates those actions to someone far away.
+
 **\*\*\*Pick one design to prototype and explain why.\*\*\***
+
+We decided to combine the Etiquette Mat and Connected Flower ideas into one prototype. The mat detects users' dining behaviors, while a flower responds through physical movements. A second flower in a remote location mirrors these movements, allowing people, especially long-distance couples, to feel connected while eating together. We chose this design because it combines sensing, physical actuation, and social interaction, turning an everyday dining experience into a playful way to connect with someone far away.
 
 Build a cardboard or other low-fidelity physical prototype of your design.
 
 **\*\*\*Document your rough prototype with photos and/or video.\*\*\***
+![Prototype](img/prototype.JPG)
 
 ---
 
