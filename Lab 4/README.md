@@ -17,12 +17,16 @@
 ---
 
 ## Lab Overview
-Team: <canvas group name>  
-Members: Full Name (netid, github-handle), ...  
-Clock name: <name>
+**Project Name:** Etiquette Bouquet
+
+**Team Members:**
+- Jianing Li (jl4837)
+- Aurora Jiaxin Shen (js3996)
+- Demi Hu (dh785)
+- Tzu-Yao (Regina) Chang (tc845)
 
 
-For lab this week, we focus on both sensing and actuation, bringing new modes of input and output into your devices, while also prototyping the physical structure and overall look of the device. You will consider how the physical form supports sensing and actuation, and how these elements come together to shape the interaction and aesthetics of the device.
+<!-- For lab this week, we focus on both sensing and actuation, bringing new modes of input and output into your devices, while also prototyping the physical structure and overall look of the device. You will consider how the physical form supports sensing and actuation, and how these elements come together to shape the interaction and aesthetics of the device. -->
 
 ---
 
@@ -46,7 +50,7 @@ F) [Final Documentation](#part-f)
 
 ---
 
-### Get the latest content:
+<!-- ### Get the latest content:
 As always, pull updates from the class Interactive-Lab-Hub to both your Pi and your own GitHub repo. As we discussed in the class, there are 3 ways you can do so:
 
 
@@ -121,8 +125,8 @@ Option 3: (preferred) use the Github.com interface to update the changes.
 * [Gear Template Generator](https://woodgears.ca/gear_cutting/template.html) can help you prototype simple gear mechanisms for translating servo motion into physical movement.
 
 
----
-
+--- -->
+<!-- 
 ### Part A
 ### Capacitive Sensing, a.k.a. Human-Twizzler Interaction 
 
@@ -279,7 +283,7 @@ Your kit includes these [SparkFun Qwiic OLED screens](https://www.sparkfun.com/p
 <p float="left">
 <img src="https://cdn.sparkfun.com//assets/parts/1/6/1/3/5/17153-SparkFun_Qwiic_OLED_Display__0.91_in__128x32_-01.jpg" height="200" />
 
-</p>
+</p> -->
 
 
 As you develop your Feast Automata concept, consider where the sensor and actuator need to be placed, what parts move, how electronics are housed, and how the overall form and aesthetics support the interaction.
@@ -307,6 +311,9 @@ Build a cardboard or other low-fidelity physical prototype of your design.
 
 https://github.com/user-attachments/assets/8e9b970d-60d3-4f68-b0e0-1b790fb89850
 
+![Process](img/process1.JPG)
+![Process](img/process2.JPG)
+![Process](img/process3.JPG)
 
 ---
 
@@ -319,14 +326,14 @@ Following exploration and reflection from Part 1, complete the "looks like," "wo
 ### Part E
 
 #### Build & Integrate: Sensing + Actuation
-
+<!-- 
 For Part 2, build the Feast Automata interaction you developed in Part D by connecting sensing/input to physical actuation.
 
 **Your prototype should:**
 - Use at least one sensing or input device.
 - Use servo-based physical actuation.
 - Connect sensing and actuation into a meaningful interaction around eating, drinking, cooking, serving, or sharing food.
-- Additional inputs, displays, LEDs, buttons, or other outputs are optional extensions.
+- Additional inputs, displays, LEDs, buttons, or other outputs are optional extensions. -->
 
 **Document your system with:**
 - Code for your sensing + actuation prototype
@@ -342,11 +349,134 @@ For Part 2, build the Feast Automata interaction you developed in Part D by conn
 
 Iterate on the sensing, movement, and physical form, and document what you discover.
 
-See encoder_accel_servo_dashboard.py in the Lab 4 folder for an optional example of chaining together three devices.
+### Part E: Build & Integrate — Sensing + Actuation
 
-**`Lab 4/encoder_accel_servo_dashboard.py`**
+#### 1. System Overview
 
-#### Example Application: Windmill Coaster
+Our final prototype, **Etiquette Bouquet**, combines an interactive dining mat with a servo-controlled flower to provide playful feedback on dining etiquette.
+
+We used three VCNL4040 proximity sensors and two APDS-9960 proximity sensors to detect whether utensils are present at their designated positions. A Raspberry Pi processes the sensor readings and determines whether the user's utensil choices are appropriate for the current dining course.
+
+The system includes three dining stages: soup, salad, and main course. Users can press a Qwiic button to move between stages.
+
+When no incorrect utensils are removed, the flower performs a graceful twirling motion accompanied by classical music. When an incorrect utensil is removed, the flower shakes from side to side and plays an error sound.
+
+#### 2. Sensing and Actuation
+
+We placed three distance sensors (VCNL4040) and two proximity sensors (APDS-9960) beneath the designated utensil positions on the etiquette mat. Each sensor detects whether a utensil is present or has been removed based on changes in sensor readings.
+
+We connected the sensors through a Qwiic TCA9548A multiplexer, allowing the Raspberry Pi to communicate with multiple sensors.
+
+The system continuously reads the sensor values and compares them with predefined thresholds. Based on the current dining stage, it checks whether any utensils outside the allowed set have been removed.
+
+The flower is attached to a micro servo motor, which translates these sensor states into physical movement.
+
+We designed two different responses:
+
+- **Correct state:** The flower twirls smoothly while playing classical music (*Clair de lune*).
+- **Incorrect state:** The flower shakes from side to side and plays an error sound.
+
+By placing the sensors beneath the utensils, users can interact with the system through familiar dining actions rather than additional controls. The flower provides physical feedback without requiring users to look at a screen.
+
+#### 3. Interaction Diagram
+
+The interaction follows this process:
+
+```text
+           User picks up a utensil
+                     |
+                     v
+       Distance & Proximity Sensors
+        (3 VCNL4040 + 2 APDS-9960)
+                     |
+                     v
+          Qwiic TCA9548A Multiplexer
+                     |
+                     v
+                Raspberry Pi
+                     |
+                     v
+          Checks current dining stage
+                     |
+             +-------+-------+
+             |               |
+             v               v
+       Correct state    Incorrect state
+             |               |
+             v               v
+        Flower twirls    Flower shakes
+             |               |
+             v               v
+       Classical music    Error sound
+```
+
+#### 4. Thresholds, Timing, and Movement Patterns
+
+We used different proximity thresholds for the two types of sensors. The VCNL4040 sensors use a threshold of 10, while the APDS-9960 sensors use a threshold of 5.
+
+To reduce unstable readings, the system requires three consecutive readings before confirming a change in utensil state. This helps prevent the flower from reacting to brief fluctuations in sensor readings.
+
+We also designed two distinct movement patterns to communicate different outcomes.
+
+For the correct state, the flower performs three smooth back-and-forth twirls between approximately 10° and 170°. We used gradual acceleration and deceleration to create a more graceful movement.
+
+For the incorrect state, the flower shakes three times, moving 20° to either side of its center position. The shorter, faster movements resemble shaking one's head.
+
+Combining these movements with different sounds helps distinguish correct and incorrect utensil choices.
+
+#### 5. Iteration: Sensing, Movement, and Physical Form
+
+During development, we explored different sensing approaches, including capacitive sensing and proximity sensing.
+
+Our initial capacitive sensing approach used conductive connections to detect interactions with utensils. However, capacitive sensing primarily detects touch, making it difficult to distinguish whether a utensil has been picked up or placed down.
+
+We therefore used proximity sensors in our integrated prototype to detect whether utensils were present at their designated positions.
+
+Since the sensors were placed beneath different utensils, their physical arrangement influenced how the system detected changes in utensil positions. We used different thresholds for the two sensor types and required three consecutive readings to confirm state changes.
+
+For actuation, we designed two contrasting servo movements: a smooth twirl for the correct state and a short shaking motion for the incorrect state.
+
+We also created a five-petal flower inspired by cherry blossoms using laser cutting. Connecting the flower to the servo allowed us to turn the sensor readings into visible physical feedback.
+
+These iterations helped us explore how sensor selection, movement patterns, and physical form could work together to create an expressive dining interaction.
+
+#### 6. Reflection
+
+Through this project, we learned that connecting sensing and actuation involves more than simply triggering a motor when a sensor detects an input. The sensor placement, interpretation of sensor readings, and movement of the physical object all influence how users experience the interaction.
+
+One interesting aspect was exploring how different flower movements could communicate different meanings. A smooth twirl creates a graceful and positive response, while a quick shaking motion resembles a playful expression of disapproval.
+
+A key challenge was determining how to reliably detect whether utensils were present or removed. Our initial exploration of capacitive sensing showed that detecting touch was not sufficient for distinguishing these two states. Switching to proximity sensing allowed us to focus on changes in utensil presence instead.
+
+We also learned the importance of thresholds and timing. Using multiple proximity sensors required us to account for different sensor readings, while confirming state changes across three consecutive readings helped reduce unwanted reactions.
+
+Overall, Etiquette Bouquet helped us understand how sensing, movement, sound, and physical form can transform everyday dining behaviors into playful interactions.
+
+#### 7. Code and Prototype Documentation
+
+**Code**
+
+- [Main Interaction Program](etiquette.py)
+- [Flower Movement and Audio Feedback](flower.py)
+- [Proximity Sensor Testing](qwiic_distance2.py)
+- [Capacitive Sensing Exploration](cap_placemat.py)
+- [Distance Sensor Exploration](distance_2.py)
+
+**Working Prototype**
+
+Our final demonstration shows how the etiquette mat detects utensil interactions and how the flower responds through physical movement and sound.
+
+**Prototype Photos**
+
+![Etiquette Bouquet Prototype](img/process4.JPG)
+![Etiquette Bouquet Prototype](img/process5.JPG)
+
+
+<!-- See encoder_accel_servo_dashboard.py in the Lab 4 folder for an optional example of chaining together three devices.
+
+**`Lab 4/encoder_accel_servo_dashboard.py`** -->
+
+<!-- #### Example Application: Windmill Coaster
 
 Now that you have explored both sensing and actuation, here is a simple example that combines the two.
 
@@ -373,9 +503,9 @@ The script continuously reads the proximity value from the distance sensor. When
 
 You may need to adjust `CUP_THRESHOLD` in [`windmill_coaster.py`](windmill_coaster.py) depending on the size of your cup and the physical placement of the sensor. You can run `qwiic_distance.py` first to compare readings with and without a cup.
 
-Use this example as a starting point. Change the sensor, movement, physical form, or dining interaction to create your own Feast Automata variation.
+Use this example as a starting point. Change the sensor, movement, physical form, or dining interaction to create your own Feast Automata variation. -->
 
-#### Optional Extensions
+<!-- #### Optional Extensions
 
 The following examples are optional resources if you want to add more inputs or outputs to your prototype.
 
@@ -494,16 +624,56 @@ This is a playful way to visualize how the expander works, but the same techniqu
 
 ---
 
----
+--- -->
 
 ### Part F
 
 ### Final Documentation
 
-Document all the prototypes and iterations you have designed and worked on! Again, deliverables for this lab are writings, sketches, photos, and videos that show what your prototype:
+<!-- Document all the prototypes and iterations you have designed and worked on! Again, deliverables for this lab are writings, sketches, photos, and videos that show what your prototype:
 * "Looks like": shows how the device should look, feel, sit, weigh, etc.
 * "Works like": shows what the device can do
-* "Acts like": shows how a person would interact with the device
+* "Acts like": shows how a person would interact with the device -->
+
+#### Looks Like
+
+Our final prototype, Etiquette Bouquet, combines an etiquette mat with an interactive flower. The mat has five designated utensil positions, with three distance sensors and two proximity sensors placed underneath to detect utensil movements.
+
+We designed a five-petal flower and used laser cutting to create its physical form. The flower is attached to a micro servo motor, allowing it to rotate and shake.
+
+We wanted the flower to feel playful and expressive while maintaining the appearance of a formal dining setting.
+
+
+#### Works Like
+
+Etiquette Bouquet uses three distance sensors and two proximity sensors to detect whether utensils are present or have been removed from their designated positions.
+
+The system supports three dining stages: soup, salad, and main course. Users can switch between stages using a Qwiic button.
+
+Based on the current stage, the Raspberry Pi determines whether any incorrect utensils have been removed and controls the flower accordingly.
+
+- **Correct state:** The flower performs a smooth twirling motion accompanied by classical music.
+- **Incorrect state:** The flower shakes from side to side and plays an error sound.
+
+These physical and auditory responses provide feedback on dining etiquette without requiring a screen.
+
+#### Acts Like
+
+The user sits in front of the Etiquette Mat, where five utensils are arranged for a three-course meal.
+
+The interaction follows three stages:
+
+1. **Soup:** The user picks up the spoon.
+2. **Salad:** The user uses the inner fork and knife.
+3. **Main Course:** The user uses the outer fork and knife.
+
+The waiter presses a button to move to the next dining stage.
+
+As the user picks up different utensils, the flower responds through movement and sound. When the user follows the expected utensil order, the flower twirls gracefully. When an incorrect utensil is picked up, the flower shakes its head and plays an error sound.
+
+Through this interaction, the flower acts as a playful dining companion, turning traditional etiquette rules into a more engaging experience.
+
+**User Interaction Demo**
 
 ---
 
