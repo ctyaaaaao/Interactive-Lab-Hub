@@ -681,9 +681,6 @@ Through this interaction, the flower acts as a playful dining companion, turning
 **User Interaction Demo**
 
 
-https://github.com/user-attachments/assets/3c2ca240-f954-4804-bbb6-bbfc75d25f1e
-
-
 
 https://github.com/user-attachments/assets/5a720cb9-edfe-4ae6-bbda-357d9641bbe6
 
