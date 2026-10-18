@@ -1,3 +1,5 @@
+
+
 # Ph-UI!!!
 
 <details>
@@ -471,6 +473,10 @@ Our final demonstration shows how the etiquette mat detects utensil interactions
 ![Etiquette Bouquet Prototype](img/process5.JPG)
 
 
+https://github.com/user-attachments/assets/c3c5f124-876b-4c08-90de-63d82818e417
+
+
+
 <!-- See encoder_accel_servo_dashboard.py in the Lab 4 folder for an optional example of chaining together three devices.
 
 **`Lab 4/encoder_accel_servo_dashboard.py`** -->
@@ -673,6 +679,15 @@ As the user picks up different utensils, the flower responds through movement an
 Through this interaction, the flower acts as a playful dining companion, turning traditional etiquette rules into a more engaging experience.
 
 **User Interaction Demo**
+
+
+https://github.com/user-attachments/assets/3c2ca240-f954-4804-bbb6-bbfc75d25f1e
+
+
+
+https://github.com/user-attachments/assets/5a720cb9-edfe-4ae6-bbda-357d9641bbe6
+
+
 
 ---
 
