@@ -48,7 +48,12 @@ def interpret(r):
         side = "left" if cx < w / 3 else "right" if cx > 2 * w / 3 else "center"   # which third of the frame
         dist = "close" if (y2 - y1) > 0.6 * h else "far"                           # how tall the box is
         people.append(f"{side}/{dist}")
-    reading = f"{len(people)} person(s) at {', '.join(people)}" if people else "nobody"
+    # reading = f"{len(people)} person(s) at {', '.join(people)}" if people else "nobody"
+    reading = (
+        f"{len(people)} person detection(s) currently visible at {', '.join(people)}"
+        if people
+        else "no person currently visible"
+    )
     if others:
         reading += "; also " + ", ".join(sorted(others))
     return reading
