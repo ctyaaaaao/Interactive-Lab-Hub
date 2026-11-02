@@ -121,7 +121,7 @@ pi@raspberrypi:~ $ ollama list
 
 **YOLO detection on my own photo**
 
-![My photo detection](img/snap_boxes.png)
+![My photo detection](img/snap_boxes.jpg)
 
 ## Part B. 
 <!-- ### See: recognize people in real time with YOLO
@@ -627,6 +627,10 @@ A `monitoring_started` event is also saved with a timestamp in `plant_log.jsonl`
 The interaction is intentionally simple: the user only needs to show one open-palm gesture before leaving the device with the plant for the night.
 
 **Bedtime hand-off video:**  
+
+
+https://github.com/user-attachments/assets/78c3b1c1-543c-4d62-8340-cb30dac782a0
+
 
 
 ## Part H. 
