@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Camera Test</title>
+</head>
+<body>
+  <h2>Mac Webcam Test</h2>
+
+  <button id="start">Start Camera</button>
+
+  <p id="status">Ready</p>
+
+  <video id="video" autoplay playsinline muted
+         width="640"></video>
+
+  <script>
+    document.getElementById("start").onclick = async () => {
+      const status = document.getElementById("status");
+
+      try {
+        status.textContent = "Requesting camera...";
+
+        const stream =
+          await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false
+          });
+
+        const video = document.getElementById("video");
+        video.srcObject = stream;
+        await video.play();
+
+        status.textContent = "Camera working!";
+      } catch (error) {
+        status.textContent = "Error: " + error.message;
+        console.error(error);
+      }
+    };
+  </script>
+</body>
+</html>
