@@ -2,14 +2,14 @@
 
 **NAMES OF COLLABORATORS HERE**
 
-For submission, replace this section with your documentation!
+Tzu-Yao (Regina) Chang (tc845), Jianing Li (jl4837), Aurora Jiaxin Shen
 
 ---
 
-## Prep
+<!-- ## Prep
 
 1. Pull the new changes
-2. Read: [The Presence Table](https://dl.acm.org/doi/10.1145/1935701.1935800) ([video](https://vimeo.com/15932020))
+2. Read: [The Presence Table](https://dl.acm.org/doi/10.1145/1935701.1935800) ([video](https://vimeo.com/15932020)) -->
 
 ## Overview
 
@@ -24,7 +24,7 @@ Build interactive systems where **multiple devices communicate over a network** 
 
 ## Part A: MQTT Messaging
 
-MQTT = lightweight messaging for IoT. Publish/subscribe model with central broker.
+<!-- MQTT = lightweight messaging for IoT. Publish/subscribe model with central broker.
 
 **Concepts:**
 - **Broker**: `farlab.infosci.cornell.edu:1883`
@@ -56,17 +56,33 @@ mosquitto_pub -h farlab.infosci.cornell.edu -p 1883 -t 'IDD/test/yourname' -m 'H
 
 **🔧 Debug Tool:** View all MQTT messages in real-time at `http://farlab.infosci.cornell.edu:5001`
 
-![MQTT Explorer showing messages](imgs/MQTT-explorer.png)
+![MQTT Explorer showing messages](imgs/MQTT-explorer.png) -->
 
 **💡 Brainstorm 5 ideas for messaging between devices**
 
 MQTT agrees on almost nothing in advance: you invent the topics and what the messages mean. Smart-home standards like Matter fix the vocabulary instead (every "light" behaves the same). Keep this trade-off in mind when you design your topics in Part C.
 
+- 1. Distant Dining Companion
+Inspired by our previous *Distant Dining Companion* concept, this system connects two people dining in different locations. When a sensor detects someone sitting down at one dining table, the other person's device responds by lighting up LEDs, rotating a flower, or playing music, creating a sense of shared presence despite the physical distance.
+
+- 2. Cooperative Trust Game
+Three players collaboratively control a virtual plate suspended by three ropes, each pulled by a character from a different direction. Using joysticks or rotary encoders, players must coordinate their movements to guide a ball on the plate into a cup at a designated location on the screen. Obstacles along the way may break the ropes, requiring careful communication and teamwork.
+
+- 3. Collaborative Music Creation
+Three players use different sensors to create music together. One controls melody and pitch using a joystick, another adjusts volume or sound effects through a gesture sensor, and the third creates rhythms using physical buttons. Their inputs are synchronized through MQTT to produce a shared musical performance.
+
+- 4. Symbiotic Garden
+Three players collaboratively nurture a virtual garden by controlling different environmental elements. One uses a rotary encoder to adjust sunlight intensity, another uses a proximity sensor to control rainfall, and the third uses a joystick to control wind direction and strength. Their combined inputs influence how virtual flowers grow, move, and bloom.
+
+- 5. Collaborative Dancing
+Three players jointly control a dancing virtual character. One selects and adjusts the background music using buttons or a rotary encoder, while the other two control the character's arms and legs through hand and body movements detected by MediaPipe. The system combines their inputs to generate a coordinated dance performance in real time.
+
+
 ---
 
 ## Part B: Collaborative Pixel Grid
 
-Each Pi = one pixel, controlled by RGB sensor, displayed in real-time grid.
+<!-- Each Pi = one pixel, controlled by RGB sensor, displayed in real-time grid.
 
 **Architecture:** `Pi (sensor) → MQTT → Server → Web Browser`
 
@@ -123,9 +139,13 @@ python pixel_grid_publisher.py
 
 Hold colored objects near sensor to change your pixel!
 
-![Pixel grid with two devices](imgs/two-devices-grid.png)
+![Pixel grid with two devices](imgs/two-devices-grid.png) -->
 
 **📸 Include: Screenshot of grid + photo of your Pi setup**
+
+![grid screenshop](imgs/grid_screenshot.png)
+
+![pi setup](imgs/pi_setup.jpg)
 
 ---
 
@@ -136,7 +156,14 @@ Hold colored objects near sensor to change your pixel!
 - Each Pi contributes sensor input via MQTT
 - Meaningful or fun interaction
 
-**Ideas:**
+**Ideas:Dancing Garden — A Collaborative Interactive Performance**
+
+Dancing Garden is an interactive installation where three participants collaborate to create a performance in a virtual garden. Each person controls a different element using sensors connected to a Raspberry Pi:
+- Dancer: Uses camera-based pose tracking to control a virtual flower's movements. Larger body movements create more energetic dancing.
+- Musician: Uses a joystick and gesture sensors to adjust the background music, including beats, rhythm, and instruments.
+- Gardener: Uses capacitive touch sensors to control environmental effects such as sunlight, rain, wind, and insect sounds.
+Together, the three participants combine dancing, music-making, and environmental effects to bring the garden to life. The goal is to explore how distributed interactions can support creativity and collaboration through a shared performance.
+
 
 **Sensor Fortune Teller**
 - Each Pi sends 0-255 from different sensor
@@ -159,37 +186,284 @@ Hold colored objects near sensor to change your pixel!
 
 ### Deliverables
 
-Replace this README with your documentation:
+<!-- Replace this README with your documentation: -->
 
 **1. Project Description**
-- What does it do? Why interesting? User experience?
+<!-- - What does it do? Why interesting? User experience? -->
+### Overview
+
+Dancing Garden is a collaborative interactive installation where three participants work together to bring a virtual garden to life. Each participant takes on a different role—Dancer, Musician, or Gardener—and uses sensors connected to a Raspberry Pi to control a different aspect of the performance.
+
+- **Dancer:** Uses camera-based pose tracking with MediaPipe to control a virtual flower. Opening the arms makes the flower bloom, leaning makes it sway, and larger movements create more energetic dancing.
+- **Musician:** Uses physical controllers, such as a joystick and gesture sensors, to influence the background music, including beats, rhythm, and instruments.
+- **Gardener:** Uses capacitive touch sensors connected to conductive materials to control environmental effects, such as sunlight, rain, wind, lightning, and fireflies.
+
+### Why Is It Interesting?
+
+Unlike a traditional interactive installation controlled by one person, Dancing Garden distributes creative control across three participants. Each person contributes a different element, but the final performance emerges from their combined actions.
+
+Our goal is to explore how physical interaction and distributed devices can support collaborative creativity. By combining dancing, music-making, and environmental effects, we turn a virtual garden into a shared performance space.
+
+### User Experience
+
+Three participants interact with their respective sensors while watching the same virtual garden. As the Dancer moves, the flower responds. The Musician shapes the rhythm of the performance, while the Gardener transforms the atmosphere.
+
+Participants can experiment with different combinations of movements, sounds, and environmental conditions to create their own unique performance.
 
 **2. Architecture Diagram**
-- Hardware, connections, data flow
-- Label input/computation/output
+<!-- - Hardware, connections, data flow
+- Label input/computation/output -->
+Our system consists of three Raspberry Pis and a shared web application. MQTT enables communication between the devices.
+
+### System Architecture
+![System Architecture](imgs/architecture_diagram.PNG)
 
 **3. Build Documentation**
-- Photos of each Pi + sensors
+<!-- - Photos of each Pi + sensors
 - MQTT topics used
-- Code snippets with explanations
+- Code snippets with explanations -->
+
+### Input, Computation, and Output
+
+| Role | Input | Computation | Output |
+|---|---|---|---|
+| Dancer | Camera, body movements | MediaPipe pose detection and gesture mapping | Flower animation |
+| Musician | Joystick and gesture sensors | Sensor-to-music mapping | Beat, rhythm, and music |
+| Gardener | Capacitive touch sensors | Touch detection and MQTT publishing | Weather and environmental effects |
+
+### Data Flow
+
+1. Each participant interacts with their assigned sensors.
+2. The Raspberry Pis collect sensor data.
+3. Sensor events are communicated through MQTT.
+4. The shared web application processes incoming events.
+5. The virtual flower, music, and environment respond to participants' actions.
+
+### Hardware and Software
+
+| Role | Hardware | Software |
+|---|---|---|
+| Dancer | Raspberry Pi, USB camera | Python, MediaPipe, Three.js |
+| Musician | Raspberry Pi, [TODO: Actual sensors] | [TODO: Software] |
+| Gardener | Raspberry Pi, MPR121, conductive materials | Python, Paho MQTT |
+
+### 3.1 Dancer — Body Movement
+
+The Dancer uses a camera and MediaPipe to detect body landmarks, including shoulders, elbows, and wrists.
+
+The detected coordinates are converted into movement parameters that control the flower's animation.
+
+- **Arm openness:** Controls how much the flower blooms.
+- **Body leaning:** Controls the flower's swaying direction.
+- **Arm height:** Controls the flower's growth.
+- **Movement intensity:** Controls how energetically the flower dances.
+
+We use Three.js to render the virtual flower and interpolate between movement values to create smoother animations.
+
+**Hardware Setup**
+![Setup](imgs/setup4.JPG)
+
+### 3.2 Musician — Music Control
+
+The Musician's role is to control the musical atmosphere through physical interactions.
+
+Our original design combines a joystick and gesture sensors to modify the background music, allowing participants to experiment with different beats, rhythms, melodies, and instruments.
+
+The shared web interface listens for music state and beat events through MQTT, which can influence the flower's movement.
+
+[TODO: Describe the actual sensors, music controls, and implementation.]
+
+**Hardware Setup**
+![Setup](imgs/setup3.JPG)
+
+### 3.3 Gardener — Environmental Control
+
+The Gardener uses an MPR121 capacitive touch sensor connected to conductive materials.
+
+Each electrode controls a different environmental effect.
+
+| Electrode | Effect |
+|---|---|
+| 0 | Cloud |
+| 2 | Rain |
+| 3 | Rainbow |
+| 5 | Wind |
+| 6 | Lightning |
+| 8 | Fireflies |
+| 9 | Night |
+| 11 | Day |
+
+When a participant touches an electrode, the Raspberry Pi publishes an MQTT message that triggers the corresponding effect in the virtual garden.
+
+**Hardware Setup**
+![Setup](imgs/setup2.JPG)
+![Setup](imgs/setup5.JPG)
+
+### 3.4 MQTT Communication
+
+We use MQTT to connect the distributed devices and the shared web application.
+
+**MQTT Broker**
+
+```text
+Host: farlab.infosci.cornell.edu
+Port: 1883
+```
+
+**MQTT Topics**
+
+| Topic | Purpose |
+|---|---|
+| `IDD/dancinggarden/gardener` | Gardener touch events |
+| `garden/gardener/weather` | Environmental state |
+| `garden/musician/state` | Music state and BPM |
+| `garden/musician/beat` | Beat events |
+| `garden/dancer/state` | Dancer movement state (publisher verification pending) |
+
+The web application receives MQTT events through a Python bridge and updates the shared garden accordingly.
+
+### 3.5 Code Snippets
+
+**Example 1: Publishing Gardener touch events**
+
+```python
+payload = {
+    'device': 'gardener',
+    'event': 'touch',
+    'electrode': pin,
+    'effect': effect
+}
+
+client.publish(TOPIC, json.dumps(payload), qos=0)
+```
+
+When a new touch is detected, the Gardener Pi publishes a JSON message containing the electrode number and corresponding effect.
+
+**Example 2: Processing MQTT messages**
+
+```javascript
+if (topic === "IDD/dancinggarden/gardener") {
+  if (msg && (msg.event ?? "touch") === "touch") {
+    gardenerTouch(Number(msg.electrode));
+  }
+  return;
+}
+```
+
+The web application reads each incoming message and calls the corresponding function to update the garden environment.
+
+**Example 3: Processing musical beats**
+
+```javascript
+if (topic === "garden/musician/beat") {
+  beat = 1;
+  env.music = 1;
+  return;
+}
+```
+
+When a musical beat event arrives, the system updates its beat state, allowing rhythmic animation to respond to the music.
 
 **4. User Testing**
-- **Test with 2+ people NOT on your team**
+<!-- - **Test with 2+ people NOT on your team**
 - Photos/video of use
 - What did they think before trying?
 - What surprised them?
-- What would they change?
+- What would they change? -->
 
-**5. Reflection**
-- What worked well?
-- Challenges with distributed interaction?
-- How did sensor events work?
-- What would you improve?
-- Where did computation happen in your system, and why there? (If you used a language model: did it run on every event, or only at setup?)
+We will test Dancing Garden with at least two participants who are not members of our team.
+
+Our goal is to understand whether the interactions are intuitive, engaging, and collaborative.
+
+### Participant 1
+
+- **Before trying:** [TODO: What did they expect?]
+- **What surprised them:** [TODO: What did they find unexpected or interesting?]
+- **What would they change:** [TODO: Their suggestions]
+
+### Participant 2
+
+- **Before trying:** [TODO: What did they expect?]
+- **What surprised them:** [TODO: What did they find unexpected or interesting?]
+- **What would they change:** [TODO: Their suggestions]
+
+### Testing Documentation
+
+[TODO: Insert photos or videos of both participants using the installation.]
+
+### Key Findings
+
+[TODO: Summarize what participants liked, what confused them, and how they experienced collaboration.]
 
 ---
 
-## Optional Stretch: Self-Describing Devices
+**5. Reflection**
+<!-- - What worked well?
+- Challenges with distributed interaction?
+- How did sensor events work?
+- What would you improve?
+- Where did computation happen in your system, and why there? (If you used a language model: did it run on every event, or only at setup?) -->
+### What Worked Well?
+
+One successful aspect of our project was translating natural body movements into expressive flower animations. The Dancer could interact with the flower through intuitive physical gestures without learning complicated commands.
+
+The Gardener's touch-based interface also provided a direct and playful way to transform the environment.
+
+By assigning different responsibilities to three participants, we created opportunities for collaborative interaction, where individual actions contribute to a shared experience.
+
+### Challenges with Distributed Interaction
+
+One of our main challenges was integrating different types of sensor inputs into a single interactive system. Each Raspberry Pi performs a different task, so we needed to ensure that sensor data could be communicated and interpreted consistently.
+
+We also encountered challenges connecting MQTT to the browser. Our initial browser-based MQTT approach experienced connectivity issues, so we introduced a Python MQTT bridge to receive messages and pass them to the web interface.
+
+Another challenge was integrating the animated flower with environmental backgrounds while maintaining a consistent layout and visual appearance.
+
+### How Did Sensor Events Work?
+
+The Gardener uses event-based communication. When a new touch is detected, the Pi publishes an MQTT message containing the electrode number and its corresponding effect.
+
+We implemented a short debounce interval to reduce repeated touch events.
+
+For the Dancer, camera frames are continuously processed using MediaPipe. Detected body movements are mapped to animation parameters, allowing the flower to respond dynamically.
+
+The shared application also listens for musical beat and tempo events to influence the flower's rhythmic movements.
+
+### Where Did Computation Happen, and Why?
+
+Computation was distributed according to each component's responsibilities.
+
+- **Gardener Pi:** Detects touch events locally and publishes MQTT messages.
+- **Dancer Pi:** Provides the camera stream.
+- **Browser:** Runs MediaPipe pose detection, maps body movements to flower animation parameters, and renders the 3D scene using Three.js.
+- **MQTT Broker:** Handles communication between devices.
+- **Python MQTT Bridge:** Receives MQTT messages and makes them available to the web interface.
+- **Musician Pi:** [TODO: Describe local sensor processing and music generation.]
+
+This architecture separates sensor input, communication, and rendering, making the system easier to develop, debug, and extend.
+
+We did not use a language model for the documented main interaction. Instead, predefined mappings translate sensor events into visual and musical behaviors without requiring model inference for each event.
+
+### What Would We Improve?
+
+In future iterations, we would improve synchronization between the three participants and provide clearer feedback about how each person's actions influence the overall performance.
+
+We would also like to make the interaction more intuitive for first-time users and explore more sophisticated relationships between music, movement, and environmental effects.
+
+[TODO: Add specific improvements based on actual user testing.]
+
+---
+
+## Project Media
+
+[TODO: Add final installation photo and demonstration video.]
+
+![Setup](imgs/setup1.JPG)
+![Setup](imgs/setup6.jpg)
+
+---
+
+<!-- ## Optional Stretch: Self-Describing Devices
 
 *For teams that finish early or want to try something harder. Not required.*
 
@@ -306,4 +580,4 @@ Before submitting:
 
 ---
 
-Resources: [MQTT Guide](https://www.hivemq.com/mqtt-essentials/) | [Paho Python](https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php) | [Flask-SocketIO](https://flask-socketio.readthedocs.io/)
+Resources: [MQTT Guide](https://www.hivemq.com/mqtt-essentials/) | [Paho Python](https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php) | [Flask-SocketIO](https://flask-socketio.readthedocs.io/) -->
