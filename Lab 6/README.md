@@ -239,13 +239,15 @@ Our system consists of three Raspberry Pis and a shared web application. MQTT en
 4. The shared web application processes incoming events.
 5. The virtual flower, music, and environment respond to participants' actions.
 
+
 ### Hardware and Software
 
 | Role | Hardware | Software |
 |---|---|---|
-| Dancer | Raspberry Pi, USB camera | Python, MediaPipe, Three.js |
-| Musician | Raspberry Pi, [TODO: Actual sensors] | [TODO: Software] |
-| Gardener | Raspberry Pi, MPR121, conductive materials | Python, Paho MQTT |
+| Dancer | Raspberry Pi, USB Webcam | Python, MediaPipe, Three.js |
+| Musician | Raspberry Pi, Qwiic Joystick, APDS-9960 Gesture & Proximity Sensor | Python, Flask-SocketIO, Tone.js, MQTT |
+| Gardener | Raspberry Pi, MPR121 Capacitive Touch Sensor (8 electrodes), Conductive Materials | Python, Paho MQTT |
+
 
 ### 3.1 Dancer — Body Movement
 
@@ -265,13 +267,14 @@ We use Three.js to render the virtual flower and interpolate between movement va
 
 ### 3.2 Musician — Music Control
 
-The Musician's role is to control the musical atmosphere through physical interactions.
+The Musician controls the background music through two sensors: a Qwiic Joystick and an APDS-9960 Gesture & Proximity Sensor.
 
-Our original design combines a joystick and gesture sensors to modify the background music, allowing participants to experiment with different beats, rhythms, melodies, and instruments.
+- **Qwiic Joystick:** Detects directional movements (up, down, left, and right) to adjust musical parameters.
+- **APDS-9960:** Recognizes hand gestures (up, down, left, and right), allowing users to interact with the music without touching the device.
 
-The shared web interface listens for music state and beat events through MQTT, which can influence the flower's movement.
+The Raspberry Pi reads sensor inputs through I²C and maps them to musical controls. Python and Flask-SocketIO handle communication with the web interface, while Tone.js generates music in real time.
 
-[TODO: Describe the actual sensors, music controls, and implementation.]
+Music events are also communicated through MQTT, allowing the shared garden to respond to changes in rhythm and create a more synchronized performance.
 
 **Hardware Setup**
 ![Setup](imgs/setup3.JPG)
@@ -371,29 +374,27 @@ When a musical beat event arrives, the system updates its beat state, allowing r
 - What surprised them?
 - What would they change? -->
 
-We will test Dancing Garden with at least two participants who are not members of our team.
+We tested Dancing Garden with three participants outside our team, allowing them to experience all three roles simultaneously. Before starting, each participant chose the station that interested them most. We observed how they interacted with the installation, what surprised them, and what improvements they suggested.
 
-Our goal is to understand whether the interactions are intuitive, engaging, and collaborative.
+**Testing Documentation:**
 
-### Participant 1
+- [Three-person interaction]
+- [Gardener close-up]
+- [Musician close-up]
+- [Final shared screen]
 
-- **Before trying:** [TODO: What did they expect?]
-- **What surprised them:** [TODO: What did they find unexpected or interesting?]
-- **What would they change:** [TODO: Their suggestions]
+### User Feedback
 
-### Participant 2
+| Question | Observation / Feedback | Design Implication |
+|---|---|---|
+| **What did they think before trying?** | Participants found the installation interesting and were curious about how the three roles worked together. Each chose a station based on their interests. | Distinct roles and physical interfaces help participants understand their options and encourage exploration. |
+| **What surprised them?** | Participants were surprised by how immediately their actions affected the garden's visuals and sounds. They particularly enjoyed seeing their individual inputs contribute to a shared performance. | Immediate feedback helps participants connect their actions to the overall experience and makes collaboration more engaging. |
+| **What would they change?** | Participants suggested using a larger display to make the shared performance more immersive. They also wanted to switch roles and explore a richer garden environment. | A larger display, easier role switching, and more detailed environmental effects could improve immersion and encourage longer interactions. |
 
-- **Before trying:** [TODO: What did they expect?]
-- **What surprised them:** [TODO: What did they find unexpected or interesting?]
-- **What would they change:** [TODO: Their suggestions]
+### Key Takeaways
 
-### Testing Documentation
+Overall, participants enjoyed the immediate feedback and collaborative nature of Dancing Garden. The testing highlighted the importance of making individual contributions visible within the shared experience. Based on their feedback, we would prioritize a larger display, encourage role switching, and expand the garden's visual effects in future iterations.
 
-[TODO: Insert photos or videos of both participants using the installation.]
-
-### Key Findings
-
-[TODO: Summarize what participants liked, what confused them, and how they experienced collaboration.]
 
 ---
 
@@ -429,20 +430,22 @@ For the Dancer, camera frames are continuously processed using MediaPipe. Detect
 
 The shared application also listens for musical beat and tempo events to influence the flower's rhythmic movements.
 
+
 ### Where Did Computation Happen, and Why?
 
-Computation was distributed according to each component's responsibilities.
+Computation was distributed across the three Raspberry Pis and the browser based on their responsibilities.
 
-- **Gardener Pi:** Detects touch events locally and publishes MQTT messages.
-- **Dancer Pi:** Provides the camera stream.
-- **Browser:** Runs MediaPipe pose detection, maps body movements to flower animation parameters, and renders the 3D scene using Three.js.
-- **MQTT Broker:** Handles communication between devices.
-- **Python MQTT Bridge:** Receives MQTT messages and makes them available to the web interface.
-- **Musician Pi:** [TODO: Describe local sensor processing and music generation.]
+- **Gardener Pi:** Detects touch events using the MPR121 sensor, maps them to environmental effects, and publishes MQTT messages.
+- **Dancer Pi:** Streams camera footage to the browser for pose tracking.
+- **Musician Pi:** Reads joystick and APDS-9960 gesture sensor inputs through I²C, processes them into music control commands, and communicates with the web interface through Flask-SocketIO. It also subscribes to weather events through MQTT.
+- **Browser:** Uses MediaPipe to detect body movements, Three.js to render the animated flower and environment, and Tone.js to generate music in real time.
+- **MQTT Broker:** Routes sensor events between the distributed devices.
+- **Python MQTT Bridge:** Receives MQTT messages and forwards them to the web interface.
 
-This architecture separates sensor input, communication, and rendering, making the system easier to develop, debug, and extend.
+We separated sensor processing, communication, and rendering to make the system easier to develop, debug, and maintain. The Raspberry Pis handle physical sensor inputs, while the browser handles more computationally intensive tasks such as pose detection, 3D rendering, and audio synthesis.
 
-We did not use a language model for the documented main interaction. Instead, predefined mappings translate sensor events into visual and musical behaviors without requiring model inference for each event.
+We did not use a language model. Instead, predefined rules translate sensor inputs into visual, environmental, and musical effects, allowing the system to respond in real time.
+
 
 ### What Would We Improve?
 
@@ -450,16 +453,18 @@ In future iterations, we would improve synchronization between the three partici
 
 We would also like to make the interaction more intuitive for first-time users and explore more sophisticated relationships between music, movement, and environmental effects.
 
-[TODO: Add specific improvements based on actual user testing.]
-
 ---
 
 ## Project Media
 
-[TODO: Add final installation photo and demonstration video.]
+<!-- [TODO: Add final installation photo and demonstration video.] -->
 
 ![Setup](imgs/setup1.JPG)
 ![Setup](imgs/setup6.jpg)
+- [Final audiovisual screen recording]
+- [Three-person interaction and user testing]
+- [Gardener interaction close-up]
+- [Musician interaction close-up]
 
 ---
 
