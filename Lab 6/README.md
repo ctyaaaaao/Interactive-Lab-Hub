@@ -378,7 +378,8 @@ We tested Dancing Garden with three participants outside our team, allowing them
 
 **Testing Documentation:**
 
-- [Three-person interaction] 
+- [Three-person interaction]
+
 https://github.com/user-attachments/assets/376f01e5-7f6c-40fb-b2d0-340411f26ea0
 
 - [Gardener close-up]
@@ -386,6 +387,7 @@ https://github.com/user-attachments/assets/376f01e5-7f6c-40fb-b2d0-340411f26ea0
 https://github.com/user-attachments/assets/1b23b5aa-1730-4563-90f3-c9f8cb7b541d
 
 - [Musician close-up]
+
 https://github.com/user-attachments/assets/994381a2-972e-4caa-841c-1a54b0d702f8
 
 
@@ -475,15 +477,19 @@ We would also like to make the interaction more intuitive for first-time users a
 ![Setup](imgs/setup1.JPG)
 ![Setup](imgs/setup6.jpg)
 - [Final audiovisual screen recording]
+
 https://github.com/user-attachments/assets/df78411a-eac7-40ec-96e0-106f17c9ff1f
 
 - [Three-person interaction and user testing]
+
 https://github.com/user-attachments/assets/376f01e5-7f6c-40fb-b2d0-340411f26ea0
 
 - [Gardener interaction close-up]
+
 https://github.com/user-attachments/assets/1b23b5aa-1730-4563-90f3-c9f8cb7b541d
 
 - [Musician interaction close-up]
+
 https://github.com/user-attachments/assets/994381a2-972e-4caa-841c-1a54b0d702f8
 
 
